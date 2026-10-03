@@ -1,0 +1,481 @@
+/* ============================================
+   دعوة زفاف فاخرة - التصميم الأساسي
+   ============================================ */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+:root{
+    --ivory:#f8f1e2;
+    --ivory-light:#fffaf3;
+    --beige:#e9dcc0;
+    --beige-dark:#ded0ab;
+    --gold:#b8860b;
+    --gold-light:#d4af37;
+    --gold-pale:#f4d675;
+    --ink:#2b2115;
+    --ink-soft:#5c4a32;
+    --black:#0a0a0a;
+}
+
+body{
+    background:linear-gradient(180deg,var(--ivory-light) 0%,var(--ivory) 45%,var(--beige) 100%);
+    color:var(--ink);
+    font-family:'Cairo',sans-serif;
+    overflow-x:hidden;
+    min-height:100vh;
+}
+
+.hidden{
+    display:none !important;
+}
+
+/* ===== نظام المراحل (Stages) ===== */
+
+.stage{
+    position:fixed;
+    inset:0;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    z-index:60;
+    transition:opacity 1s ease;
+}
+
+.stage.fade-out{
+    opacity:0;
+    pointer-events:none;
+}
+
+.stage-loader{
+    background:var(--black);
+    z-index:70;
+}
+
+.stage-envelope{
+    background:radial-gradient(circle at top,#f4ecd8 0%,var(--beige) 55%,var(--beige-dark) 100%);
+    padding:25px;
+    text-align:center;
+}
+
+/* ===== المرحلة الأولى: الشعار + اللودر ===== */
+
+.logo-mark{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    font-family:'Amiri',serif;
+    font-size:36px;
+    color:var(--gold-pale);
+    letter-spacing:3px;
+    margin-bottom:50px;
+}
+
+.logo-heart{
+    font-size:18px;
+    color:var(--gold-pale);
+    animation:softPulse 1.8s infinite;
+}
+
+.soft-loader{
+    display:flex;
+    gap:12px;
+}
+
+.soft-loader span{
+    width:9px;
+    height:9px;
+    border-radius:50%;
+    background:var(--gold-pale);
+    opacity:.3;
+    animation:softDot 1.3s ease-in-out infinite;
+}
+
+.soft-loader span:nth-child(2){ animation-delay:.2s; }
+.soft-loader span:nth-child(3){ animation-delay:.4s; }
+
+@keyframes softDot{
+    0%,100%{ opacity:.25; transform:translateY(0); }
+    50%{ opacity:1; transform:translateY(-8px); }
+}
+
+@keyframes softPulse{
+    0%,100%{ transform:scale(1); opacity:1; }
+    50%{ transform:scale(1.25); opacity:.7; }
+}
+
+/* ===== المرحلة الثانية: تلميح الضغط ===== */
+
+.tap-hint{
+    margin-top:45px;
+    color:var(--ink-soft);
+    font-size:15px;
+    letter-spacing:.5px;
+    animation:hintFade 2s ease-in-out infinite;
+}
+
+@keyframes hintFade{
+    0%,100%{ opacity:.5; }
+    50%{ opacity:1; }
+}
+
+/* ===== الدعوة الكاملة (المرحلة الثالثة) ===== */
+
+.invitation-paper{
+    position:relative;
+    min-height:100vh;
+    opacity:0;
+    transition:opacity 1.3s ease;
+}
+
+.invitation-paper.visible{
+    opacity:1;
+}
+
+#particles{
+    position:fixed;
+    inset:0;
+    overflow:hidden;
+    z-index:0;
+    pointer-events:none;
+}
+
+/* ===== زر الموسيقى ===== */
+
+.music-btn{
+    position:fixed;
+    top:20px;
+    left:20px;
+    width:52px;
+    height:52px;
+    border-radius:50%;
+    background:linear-gradient(145deg,var(--gold-pale),var(--gold));
+    color:var(--ink);
+    font-size:20px;
+    border:none;
+    cursor:pointer;
+    z-index:200;
+    box-shadow:0 4px 18px rgba(184,134,11,.4);
+    transition:.3s;
+}
+
+.music-btn:hover{
+    transform:scale(1.08);
+}
+
+/* ===== قسم الترحيب / الأسماء ===== */
+
+.hero{
+    position:relative;
+    z-index:1;
+    padding:80px 25px 40px;
+    text-align:center;
+    max-width:650px;
+    margin:0 auto;
+}
+
+.bismillah{
+    color:var(--gold);
+    font-size:18px;
+    letter-spacing:1px;
+    margin-bottom:10px;
+}
+
+/* ===== صورة العروسين ===== */
+
+.couple-photo{
+    width:220px;
+    margin:25px auto;
+    border-radius:18px;
+    border:3px solid var(--gold);
+    box-shadow:0 12px 30px rgba(90,65,20,.22);
+    overflow:hidden;
+    position:relative;
+    padding:6px;
+    background:var(--ivory-light);
+}
+
+.couple-photo::after{
+    content:"";
+    position:absolute;
+    inset:12px;
+    border:1px solid rgba(184,134,11,.4);
+    border-radius:12px;
+    pointer-events:none;
+}
+
+.couple-photo img{
+    width:100%;
+    display:block;
+    border-radius:12px;
+    object-fit:cover;
+}
+
+.section-label{
+    font-size:13px;
+    letter-spacing:4px;
+    color:var(--ink-soft);
+    text-transform:uppercase;
+    margin-bottom:6px;
+}
+
+.couple-names{
+    font-family:'Amiri',serif;
+    font-size:40px;
+    font-weight:700;
+    color:var(--ink);
+    margin:8px 0;
+    line-height:1.5;
+}
+
+.heart-divider{
+    font-size:26px;
+    color:var(--gold);
+    margin:6px 0;
+    animation:pulse 1.8s infinite;
+}
+
+.quote{
+    margin:30px 0 10px;
+    font-size:17px;
+    line-height:2.1;
+    color:var(--ink-soft);
+    font-family:'Noto Naskh Arabic','Amiri',serif;
+}
+
+.formal-invite{
+    max-width:420px;
+    margin:10px auto 25px;
+    padding:20px 22px;
+    background:var(--ivory-light);
+    border:1px solid rgba(184,134,11,.3);
+    border-radius:14px;
+    font-family:'Noto Naskh Arabic','Amiri',serif;
+    font-size:16px;
+    line-height:2.1;
+    color:var(--ink);
+    box-shadow:0 8px 22px rgba(90,65,20,.08);
+}
+
+/* ===== قسم التفاصيل ===== */
+
+.details-section{
+    position:relative;
+    z-index:1;
+    max-width:650px;
+    margin:0 auto;
+    padding:20px 25px 60px;
+    text-align:center;
+}
+
+.section-title{
+    font-family:'Amiri',serif;
+    font-size:28px;
+    color:var(--ink);
+    margin-bottom:35px;
+    position:relative;
+}
+
+.details{
+    display:flex;
+    justify-content:center;
+    gap:18px;
+    margin:35px 0;
+    flex-wrap:wrap;
+}
+
+.details div{
+    background:var(--ivory-light);
+    border:1px solid rgba(184,134,11,.35);
+    border-radius:16px;
+    padding:26px 20px;
+    width:170px;
+    box-shadow:0 8px 22px rgba(90,65,20,.08);
+    transition:transform .4s;
+}
+
+.details div:hover{
+    transform:translateY(-5px);
+}
+
+.icon{
+    display:inline-block;
+    font-size:26px;
+    animation:floatIcon 3s ease-in-out infinite;
+}
+
+@keyframes floatIcon{
+    0%,100%{ transform:translateY(0); }
+    50%{ transform:translateY(-6px); }
+}
+
+.details p{
+    margin-top:14px;
+    line-height:1.8;
+    color:var(--ink-soft);
+    font-size:15px;
+}
+
+/* ===== العداد التنازلي ===== */
+
+#countdown{
+    display:flex;
+    justify-content:center;
+    gap:18px;
+    flex-wrap:wrap;
+    margin:40px 0;
+}
+
+.count-box{
+    background:var(--ivory-light);
+    border:1px solid rgba(184,134,11,.35);
+    border-radius:14px;
+    padding:16px 14px;
+    min-width:68px;
+    box-shadow:0 6px 16px rgba(90,65,20,.08);
+}
+
+.count-box span{
+    display:block;
+    font-size:26px;
+    font-weight:700;
+    color:var(--gold);
+}
+
+.count-box small{
+    font-size:12px;
+    color:var(--ink-soft);
+}
+
+/* ===== أزرار الإجراءات ===== */
+
+.action-buttons{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:16px;
+    margin-top:40px;
+}
+
+.btn-primary,
+.btn-secondary{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    width:100%;
+    max-width:320px;
+    padding:16px 30px;
+    border-radius:45px;
+    font-size:17px;
+    font-weight:bold;
+    text-decoration:none;
+    cursor:pointer;
+    border:none;
+    transition:.35s;
+}
+
+.btn-primary{
+    background:#25D366;
+    color:#fff;
+}
+
+.btn-primary:hover{
+    transform:scale(1.04);
+    box-shadow:0 6px 20px rgba(37,211,102,.4);
+}
+
+.btn-secondary{
+    background:transparent;
+    color:var(--gold);
+    border:2px solid var(--gold);
+}
+
+.btn-secondary:hover{
+    background:var(--gold);
+    color:#fff;
+    transform:scale(1.04);
+}
+
+/* ===== قسم الختام ===== */
+
+.closing{
+    position:relative;
+    z-index:1;
+    text-align:center;
+    padding:50px 25px 70px;
+    max-width:600px;
+    margin:0 auto;
+}
+
+.thanks{
+    font-size:19px;
+    color:var(--ink);
+    margin-bottom:18px;
+    line-height:1.9;
+}
+
+.dua{
+    font-family:'Amiri',serif;
+    font-size:18px;
+    color:var(--gold);
+    line-height:2.1;
+    margin-bottom:35px;
+}
+
+/* ===== الأنيميشن العامة ===== */
+
+@keyframes pulse{
+    0%{ transform:scale(1); }
+    50%{ transform:scale(1.2); }
+    100%{ transform:scale(1); }
+}
+
+/* ===== الموبايل ===== */
+
+@media(max-width:768px){
+
+    .couple-photo{
+        width:170px;
+    }
+
+    .couple-names{
+        font-size:30px;
+    }
+
+    .logo-mark{
+        font-size:28px;
+    }
+
+    .quote{
+        font-size:15px;
+    }
+
+    .details{
+        flex-direction:column;
+        align-items:center;
+    }
+
+    .details div{
+        width:100%;
+        max-width:280px;
+    }
+
+    .count-box{
+        min-width:60px;
+        padding:12px 10px;
+    }
+
+    .count-box span{
+        font-size:22px;
+    }
+
+}

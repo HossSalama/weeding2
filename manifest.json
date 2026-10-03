@@ -1,0 +1,16 @@
+{
+  "name": "دعوة زفاف عبدالله ونورهان",
+  "short_name": "Wedding",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f8f1e2",
+  "theme_color": "#b8860b",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "assets/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

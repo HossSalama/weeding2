@@ -1,0 +1,132 @@
+/* ============================================
+   التأثيرات: لمعان ذهبي - رسم ذاتي - ورد متساقط - كتابة حرفية
+   ============================================ */
+
+/* ===== لمعان ذهبي على النصوص ===== */
+
+.gold-shine{
+    background:linear-gradient(
+        90deg,
+        #8b6b17,
+        #fff0b5,
+        #d4af37,
+        #fff8dd,
+        #8b6b17
+    );
+    background-size:300%;
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-clip:text;
+    animation:shine 6s infinite;
+}
+
+/* داخل العنصر، الحروف المقسّمة لازم تاخد نفس التدرج بنفسها،
+   لأن خاصية background مش موروثة زي webkit-text-fill-color،
+   وإلا هتفضل شفافة تمامًا وتختفي */
+
+.gold-shine .letter{
+    background-image:linear-gradient(
+        90deg,
+        #8b6b17,
+        #fff0b5,
+        #d4af37,
+        #fff8dd,
+        #8b6b17
+    );
+    background-size:300%;
+    -webkit-background-clip:text;
+    background-clip:text;
+    -webkit-text-fill-color:transparent;
+    animation:letterIn .6s ease forwards, shine 6s infinite;
+}
+
+@keyframes shine{
+    0%{ background-position:0%; }
+    100%{ background-position:300%; }
+}
+
+/* ===== خطوط ذهبية ترسم نفسها (الخاتم / الفواصل) ===== */
+
+.ring-art{
+    width:110px;
+    margin:15px auto 20px;
+}
+
+.ring-art svg{
+    width:100%;
+    height:auto;
+    overflow:visible;
+}
+
+.divider{
+    width:100%;
+    max-width:320px;
+    margin:35px auto;
+}
+
+.divider svg{
+    width:100%;
+    height:auto;
+    overflow:visible;
+}
+
+.draw-svg path,
+.draw-svg circle,
+.draw-svg line,
+.draw-svg polyline{
+    fill:none;
+}
+
+.no-draw{
+    opacity:0;
+    transition:opacity 1s ease .9s;
+}
+
+.draw-svg.in-view .no-draw{
+    opacity:1;
+}
+
+/* ===== كتابة تظهر حرفًا حرفًا ===== */
+
+.letter{
+    display:inline-block;
+    opacity:0;
+    transform:translateY(14px);
+    animation:letterIn .6s ease forwards;
+}
+
+@keyframes letterIn{
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* ===== بتلات الورد المتساقطة ===== */
+
+.petal{
+    position:fixed;
+    top:-30px;
+    width:16px;
+    height:16px;
+    background:linear-gradient(#ffd8e6,#ff8fae);
+    border-radius:60% 0 60% 0;
+    transform:rotate(45deg);
+    animation:fall linear forwards;
+    pointer-events:none;
+    z-index:2;
+    opacity:.85;
+}
+
+@keyframes fall{
+    0%{
+        transform:translateY(0) rotate(0deg);
+        opacity:.9;
+    }
+    100%{
+        transform:translateY(110vh) rotate(720deg);
+        opacity:.15;
+    }
+}
+
+/* ===== شاشة التحميل (اللودر الناعم يستخدم في style.css الأساسي) ===== */

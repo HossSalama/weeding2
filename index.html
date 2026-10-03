@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دعوة زفاف | عبدالله &amp; نورهان</title>
+
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#b8860b">
+    <link rel="icon" href="assets/favicon.png">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="assets/envelope.css">
+    <link rel="stylesheet" href="assets/effects.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;700&family=Amiri:wght@400;700&family=Noto+Naskh+Arabic:wght@400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- ============================================ -->
+    <!-- المرحلة الأولى: شاشة سوداء + شعار ذهبي + لودر -->
+    <!-- ============================================ -->
+
+    <section id="stageLoader" class="stage stage-loader">
+        <div class="logo-mark">
+            <span>ع</span>
+            <span class="logo-heart">❤</span>
+            <span>ن</span>
+        </div>
+        <div class="soft-loader">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- المرحلة الثانية: الظرف ثلاثي الأبعاد + الختم -->
+    <!-- ============================================ -->
+
+    <section id="stageEnvelope" class="stage stage-envelope hidden">
+
+        <div class="envelope-3d">
+            <div class="envelope-back"></div>
+
+            <div class="paper-card" id="paperCard">
+                <p class="paper-hint">دعوة زفاف</p>
+            </div>
+
+            <div class="envelope-front-bottom"></div>
+            <div class="envelope-flap" id="envelopeFlap"></div>
+
+            <button class="wax-seal" id="waxSeal" aria-label="افتح الدعوة">ع‌ن</button>
+        </div>
+
+        <p class="tap-hint">اضغط على الختم الذهبي لفتح الدعوة</p>
+
+    </section>
+
+    <!-- ============================================ -->
+    <!-- المرحلة الثالثة: الدعوة الكاملة -->
+    <!-- ============================================ -->
+
+    <main id="invitationPaper" class="invitation-paper hidden">
+
+        <div id="particles"></div>
+
+        <button id="musicToggle" class="music-btn">🎵</button>
+
+        <audio id="music" loop>
+            <source src="music/wedding.mp3" type="audio/mpeg">
+        </audio>
+
+        <!-- الأسماء -->
+
+        <section class="hero">
+
+            <p class="bismillah">بسم الله الرحمن الرحيم</p>
+
+            <div class="couple-photo">
+                <img src="assets/couple.jpeg" alt="عبدالله ونورهان">
+            </div>
+
+            <p class="formal-invite">
+                يتشرف أ/ محمود الأسيوطي بدعوة سيادتكم لحضور عقد قران ابنته
+                نور يوم الخميس الموافق 15/10 بمنزل العائلة، وحفل الزفاف
+                يوم السبت 17/10 في قاعة ليالي بديروط
+            </p>
+
+            <div class="ring-art draw-svg">
+                <svg viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="100" cy="95" r="52" stroke="#b8860b" stroke-width="3"/>
+                    <polygon class="no-draw" points="100,26 88,46 112,46" fill="#d4af37"/>
+                    <circle class="no-draw" cx="100" cy="44" r="7" fill="#d4af37"/>
+                </svg>
+            </div>
+
+            <h1 class="couple-names gold-shine">عبدالله</h1>
+
+            <div class="heart-divider">❤</div>
+
+            <h1 class="couple-names gold-shine">نورهان</h1>
+
+            <p class="quote">
+                "ومن آياته أن خلق لكم من أنفسكم أزواجاً لتسكنوا إليها وجعل بينكم مودة ورحمة"
+            </p>
+
+        </section>
+
+        <div class="divider draw-svg">
+            <svg viewBox="0 0 500 60" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10,30 C90,5 150,55 250,30 C350,5 410,55 490,30" stroke="#b8860b" stroke-width="2"/>
+                <circle class="no-draw" cx="250" cy="30" r="5" fill="#b8860b"/>
+                <ellipse class="no-draw" cx="250" cy="17" rx="5" ry="9" fill="#b8860b" opacity=".85"/>
+                <ellipse class="no-draw" cx="250" cy="43" rx="5" ry="9" fill="#b8860b" opacity=".85"/>
+                <ellipse class="no-draw" cx="235" cy="30" rx="9" ry="5" fill="#b8860b" opacity=".85"/>
+                <ellipse class="no-draw" cx="265" cy="30" rx="9" ry="5" fill="#b8860b" opacity=".85"/>
+            </svg>
+        </div>
+
+        <!-- التفاصيل -->
+
+        <section class="details-section">
+
+            <h2 class="section-title">تفاصيل الحفل</h2>
+
+            <div class="details">
+
+                <div>
+                    <span class="icon">📅</span>
+                    <p>السبت<br>17 أكتوبر 2026</p>
+                </div>
+
+                <div>
+                    <span class="icon">🕗</span>
+                    <p>الثامنة مساءً</p>
+                </div>
+
+                <div>
+                    <span class="icon">🏛️</span>
+                    <p>قاعة ليالي - ديروط</p>
+                </div>
+
+            </div>
+
+            <div id="countdown">
+                <div class="count-box"><span id="days">00</span><small>يوم</small></div>
+                <div class="count-box"><span id="hours">00</span><small>ساعة</small></div>
+                <div class="count-box"><span id="minutes">00</span><small>دقيقة</small></div>
+                <div class="count-box"><span id="seconds">00</span><small>ثانية</small></div>
+            </div>
+
+            <div class="action-buttons">
+
+                <a class="btn-primary"
+                    href="https://wa.me/201104657045?text=السلام%20عليكم%D8%8C%20يسعدني%20تأكيد%20حضوري%20لحفل%20زفاف%20عبدالله%20ونورهان%20يوم%20السبت%2017%20أكتوبر%202026.%20ألف%20مبارك%20وبالتوفيق."
+                    target="_blank">
+                    ✅ تأكيد الحضور
+                </a>
+
+                <a class="btn-secondary"
+                    href="https://www.google.com/maps/search/?api=1&query=%D9%82%D8%A7%D8%B9%D8%A9%20%D9%84%D9%8A%D8%A7%D9%84%D9%8A%20%D8%AF%D9%8A%D8%B1%D9%88%D8%B7"
+                    target="_blank">
+                    📍 فتح الموقع على الخريطة
+                </a>
+
+            </div>
+
+        </section>
+
+        <div class="divider draw-svg">
+            <svg viewBox="0 0 500 60" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10,30 C90,5 150,55 250,30 C350,5 410,55 490,30" stroke="#b8860b" stroke-width="2"/>
+                <circle class="no-draw" cx="250" cy="30" r="5" fill="#b8860b"/>
+                <ellipse class="no-draw" cx="250" cy="17" rx="5" ry="9" fill="#b8860b" opacity=".85"/>
+                <ellipse class="no-draw" cx="250" cy="43" rx="5" ry="9" fill="#b8860b" opacity=".85"/>
+                <ellipse class="no-draw" cx="235" cy="30" rx="9" ry="5" fill="#b8860b" opacity=".85"/>
+                <ellipse class="no-draw" cx="265" cy="30" rx="9" ry="5" fill="#b8860b" opacity=".85"/>
+            </svg>
+        </div>
+
+        <!-- الختام -->
+
+        <section class="closing">
+
+            <p class="thanks">وجودكم أجمل هدية وفرحتنا تكتمل بحضوركم 🤍</p>
+
+            <p class="dua">
+                اللهم ألف بين قلبيهما كما تألف الماء والحياة،
+                واجعل بيتهما عامرًا بالمحبة والسكينة، وبارك لهما في زواجهما.
+            </p>
+
+            <button class="btn-secondary" id="shareBtn">📤 مشاركة الدعوة</button>
+
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+    <script src="assets/petals.js"></script>
+
+</body>
+
+</html>
